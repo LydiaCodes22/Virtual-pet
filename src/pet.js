@@ -12,9 +12,10 @@ function Pet(name) {
 
   Pet.prototype.walk=function () {
       const maxFitness= 10
-      if(this.fitness>=maxFitness-4) {
+      const normalIncrease= 4
+      if(this.fitness>=maxFitness-normalIncrease) {
         this.fitness=maxFitness;
       } else {
-          this.fitness+=4}
+          this.fitness+=normalIncrease}
   }
 module.exports = Pet;

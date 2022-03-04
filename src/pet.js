@@ -17,5 +17,20 @@ function Pet(name) {
         this.fitness=maxFitness;
       } else {
           this.fitness+=normalIncrease}
-  }
+  };
+  Pet.prototype.feed= function () {
+      const minHunger = 0
+      const normalReduce = 3
+      if (this.hunger-normalReduce>=minHunger) {
+          this.hunger-=normalReduce;
+      } else {
+          this.hunger=minHunger;    
+      }
+  };
+  Pet.prototype.checkUp= function () {
+      if (this.fitness<=3 && this.hunger<5){return 'I need a walk'}
+      if (this.fitness>3 && this.hunger>=5) {return 'I am hungry'}
+      if (this.fitness<=3 && this.hunger>=5){return 'I am hungry AND I need a walk'}
+      else {return 'I feel great!'}
+  };
 module.exports = Pet;

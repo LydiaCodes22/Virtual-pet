@@ -33,4 +33,7 @@ function Pet(name) {
       if (this.fitness<=3 && this.hunger>=5){return 'I am hungry AND I need a walk'}
       else {return 'I feel great!'}
   };
+  Pet.prototype.isAlive= function () {
+      return (this.fitness<=0 || this.hunger>=10 || this.age>=30 ? false : true)
+  }
 module.exports = Pet;

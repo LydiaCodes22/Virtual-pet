@@ -32,12 +32,38 @@ describe('constructor', () => {
       expect(pet.hunger).toEqual(0);
     });
     it('will tell you its needs if you run the checkUp function', () => {
+      pet.fitness = 5;
+      pet.hunger = 0;
       expect(pet.checkUp()).toEqual('I feel great!');
-      pet.growUp();
+      pet.fitness = 5;
+      pet.hunger = 5;
       expect(pet.checkUp()).toEqual('I am hungry');
-      pet.growUp();
+      pet.fitness = 1;
+      pet.hunger = 6;
       expect(pet.checkUp()).toEqual('I am hungry AND I need a walk');
-      pet.feed();
+      pet.fitness = 3;
+      pet.hunger = 4;
       expect(pet.checkUp()).toEqual('I need a walk');
+      });
+    it ('will tell you the pet is alive when the hunger is under 10, fitness over 0 & age under 30', () => {
+      pet.fitness = 5;
+      pet.hunger = 0;
+      pet.age = 0;
+      expect(pet.isAlive()).toEqual(true);
+
+      pet.fitness = 0;
+      pet.hunger = 0;
+      pet.age = 0;
+      expect(pet.isAlive()).toEqual(false);
+
+      pet.fitness = 5;
+      pet.hunger = 10;
+      pet.age = 0;
+      expect(pet.isAlive()).toEqual(false);
+
+      pet.fitness = 5;
+      pet.hunger = 0;
+      pet.age = 30;
+      expect(pet.isAlive()).toEqual(false);
       });
   });

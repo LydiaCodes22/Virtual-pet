@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 //  disabled as it was having an issue with the test keywords.
 
-const Pet = require('../src/pet')
+const Pet = require('../src/petclass')
 
 describe('constructor', () => {
   const pet = new Pet('Fido')

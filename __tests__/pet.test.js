@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+//  disabled as it was having an issue with the test keywords.
+
 const Pet = require('../src/pet')
 
 describe('constructor', () => {
@@ -111,5 +113,33 @@ describe('isAlive', () => {
     pet.hunger = 0
     pet.age = 30
     expect(pet.isAlive).toEqual(false)
+  })
+})
+
+describe('haveBaby', () => {
+  const parent = new Pet('Stan')
+  it('will add a new instance of Pet to the children array with the name passed as the argument', () => {
+    expect(parent.children).toBeInstanceOf(Array)
+    expect(parent.children.length).toBe(0)
+    parent.haveBaby('firstBorn')
+    expect(parent.children.length).toBe(1)
+    expect(parent.children[0].name).toBe('firstBorn')
+    parent.haveBaby('secondBorn')
+    expect(parent.children.length).toBe(2)
+    expect(parent.children[1].name).toBe('secondBorn')
+  })
+})
+
+describe('adoptChild', () => {
+  const parent = new Pet('Ben')
+  it('will add a new instance of Pet to the children array with the name passed as the argument', () => {
+    expect(parent.children).toBeInstanceOf(Array)
+    expect(parent.children.length).toBe(0)
+    parent.haveBaby('first')
+    expect(parent.children.length).toBe(1)
+    expect(parent.children[0].name).toBe('first')
+    parent.haveBaby('second')
+    expect(parent.children.length).toBe(2)
+    expect(parent.children[1].name).toBe('second')
   })
 })
